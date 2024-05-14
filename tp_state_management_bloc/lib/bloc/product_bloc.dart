@@ -10,7 +10,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<GetProductEvent>((event, emit) async {
       emit(ProductLoading());
       final response = await http.get(
-        Uri.parse('https://fakestoreapi.com/products?limit=10'),
+        Uri.parse('https://fakestoreapi.com/products?limit=20'),
         headers: {
           "Content-Type": "application/json",
         },
