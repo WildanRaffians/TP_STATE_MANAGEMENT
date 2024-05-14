@@ -29,58 +29,65 @@ class _DetailProdukState extends State<DetailProduk> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 1,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      backgroundColor: Colors.white,
+      elevation: 1,
+      leading: IconButton(
+        icon: const Icon(
+          Icons.arrow_back_ios,
+          color: Colors.black,
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+      title: const Text(
+        'Detail',
+        style: TextStyle(color: Colors.black),
+      ),
+      actions: const [
+        Padding(
+          padding: EdgeInsets.only(right: 8.0),
+          child: Icon(
+            Icons.favorite_border,
             color: Colors.black,
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
         ),
-        title: const Text(
-          'Detail',
-          style: TextStyle(color: Colors.black),
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 8.0),
-            child: Icon(
-              Icons.favorite_border,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
-      body: Column(
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(
             height: 8.0,
           ),
-          Text(
-            textAlign: TextAlign.center,
-            widget.product.title,
-            maxLines: 2,
-            style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              textAlign: TextAlign.center,
+              widget.product.title,
+              maxLines: 2,
+              style: const TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
-          Center(
-            child: Hero(
-              tag: widget.product.image,
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.45,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(widget.product.image),
-                        fit: BoxFit.contain)),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Center(
+              child: Hero(
+                tag: widget.product.image,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.45,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(widget.product.image),
+                          fit: BoxFit.contain)),
+                ),
               ),
             ),
           ),
@@ -93,7 +100,6 @@ class _DetailProdukState extends State<DetailProduk> {
                 Text(
                   'Category : ${widget.product.category}',
                   style: const TextStyle(
-                      // color: Colors.green,
                       fontSize: 16,
                       fontWeight: FontWeight.w700),
                 ),
@@ -102,7 +108,7 @@ class _DetailProdukState extends State<DetailProduk> {
           ),
           Container(
             color: Colors.grey[200],
-            padding: const EdgeInsets.only(left: 20, top: 20),
+            padding: const EdgeInsets.only(left: 20, top: 10),
             child: Row(
               children: [
                 Text(
@@ -115,20 +121,18 @@ class _DetailProdukState extends State<DetailProduk> {
               ],
             ),
           ),
-          Expanded(
-            child: Container(
-              color: Colors.grey[200],
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                widget.product.description,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                ),
-                textAlign: TextAlign.justify,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 5,
+          Container(
+            color: Colors.grey[200],
+            padding: const EdgeInsets.all(20),
+            child: Text(
+              widget.product.description,
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
               ),
+              textAlign: TextAlign.justify,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 5,
             ),
           ),
           Container(
@@ -195,6 +199,8 @@ class _DetailProdukState extends State<DetailProduk> {
           )
         ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 }

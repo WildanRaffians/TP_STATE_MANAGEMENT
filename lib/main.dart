@@ -40,10 +40,6 @@ class _MainPageState extends State<MainPage> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.blueAccent,
-          leading: const Icon(
-            Icons.menu,
-            color: Colors.black,
-          ),
           title: const Text(
             'Online Store',
             style: TextStyle(color: Colors.black),
