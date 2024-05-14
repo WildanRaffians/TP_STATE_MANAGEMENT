@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:tp_state_management_provider/detail_produk.dart';
 
 import 'models/products.dart';
 
@@ -13,7 +14,13 @@ class ListProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return DetailProduk(
+            product: product,
+          );
+        }));
+      },
       child: Container(
         margin: product.id <= 2? EdgeInsets.only(top: 20) : null,
         decoration: BoxDecoration(
@@ -66,10 +73,6 @@ class ListProduct extends StatelessWidget {
                 ),
               ],
             ),
-            // const Divider(
-            //   height: 2,
-            //   color: Colors.grey,
-            // ),
                 
           ],
         ),
